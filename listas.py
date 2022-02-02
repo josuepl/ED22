@@ -19,6 +19,10 @@ class Nodo:
         pass
     pass
 
+    def __repr__(self) -> str:
+        return "MASCOTA: " + self.mascota.nombre + "|Raza: "+ self.mascota.raza + "|Edad:" + str(self.mascota.edad)
+        pass
+
 def agregaMascota():
     print("Cual es el nombre de tu mascota: ")
     nombre = input()
@@ -30,23 +34,29 @@ def agregaMascota():
     pass
 
 def agregaNodo(lista,nodo):
-    if lista.__len__() == 0:
+    if lista == None:
         print("Lista Vacia \n")
         lista = nodo
     else:
-        for elemento in lista:
-            if elemento.siguiente != None:
-                elemento.siguiente = nodo
-        pass
+        aux = lista
+        print('Agrega Nodo Recorrido')
+        while aux != None:
+            print(aux)
+            aux = aux.siguiente
+            pass
+        aux = nodo
+        nodo.siguiente = None
     pass
 
 def imprimeLista(lista):
-    if lista.__len__() == 0:
+    if lista == None:
         print("Lista Vacia")
         print("[ ]")
     else:
-        for elemento in lista:
-            print(elemento," \n")
+        aux = lista
+        while aux != None:
+            print(aux)
+            aux = aux.siguiente
     pass
 
 
@@ -59,14 +69,28 @@ def menu():
     menuTxt+="4) Salir \n"
     menuTxt+="Elije la opcion deseada: \n"
     opcion = "Inicial1"
-    listaM = []
+    listaM = None
     while opcion != '4':
         print(menuTxt)
         opcion = input()
         if opcion == '1':
             print("Has elegido la opcion de agregar: \n")
             mascotaN = agregaMascota()
-            agregaNodo(listaM,mascotaN)
+            if listaM == None:
+                print("Lista Vacia \n")
+                listaM = mascotaN
+                print(listaM)
+            else:
+                aux = listaM
+                print('Agrega Nodo Recorrido\n')
+                while aux != None:
+                    print(aux)
+                    aux2 = aux
+                    aux = aux.siguiente
+                    pass
+                aux2.siguiente = mascotaN
+                mascotaN.siguiente = None
+            pass
         if opcion == '2':
             print("Has elegido la opcion de Eliminar: \n")
         if opcion == '3':
