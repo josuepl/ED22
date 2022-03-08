@@ -18,10 +18,18 @@ def buscaNodo(grafo,nodo,nNodos):
             return i
     return None
 
-def creaArista(grafo,nodoI, nodoF):
-    grafo[nodoI][nodoF] = 1
-    grafo[nodoF -1][nodoI + 1] = 1
+def existeArista(grafo,nodoI,nodoF):
+    if(grafo[nodoI][nodoF] == 1):
+        return True
+    else: 
+        return False
+    pass
 
+def creaArista(grafo,nodoI, nodoF,resp):
+    if resp == '2':
+        grafo[nodoF -1][nodoI + 1] = 1
+    grafo[nodoI][nodoF] = 1
+    pass
 def menu():
     nNodos = 0
     opcion = None
@@ -53,6 +61,7 @@ def menu():
             imprime(grafo,nNodos)
         if opcion == '2':
             nodoF = nodoI = None
+            resp = input("La arista es dirigida(1.SI / 2. NO)")
             while nodoI == None:
                 origen = input("Ingresa el nombre del nodo Origen: ")
                 nodoI = buscaNodo(grafo, origen,nNodos) 
@@ -61,7 +70,12 @@ def menu():
                 destino = input("Ingresa el nombre del nodo Destino: ")
                 nodoF = buscaNodo(grafo, destino, nNodos) + 1
             print(nodoF)
-            creaArista(grafo,nodoI,nodoF)
+            bandAris = existeArista(grafo,nodoI, nodoF)
+            if bandAris:
+                print("La Arista ya existe","\n No se creo la arista")
+            else:
+                creaArista(grafo,nodoI,nodoF,resp)
+            
             pass
         if opcion == '3':
             imprime(grafo,nNodos)
