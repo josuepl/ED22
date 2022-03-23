@@ -17,14 +17,16 @@ mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
 
 #estilo frame
 styleF = ttk.Style()
-styleF.configure('CuadroControl',background = 'blue', borderwith = 5, relief='sunken')
+styleF.configure('cc',background = 'blue', borderwith = 5, relief='sunken')
 frameR = ttk.Frame(mainframe)
 frameR.grid(column=1,row=4)
-frameR['borderwidth'] = 3
-frameR['relief'] = 'solid'
-
+frameR['borderwidth'] = 10
+frameR['relief'] = 'raised' # 'solid', 'sunken','flat', 'ridge', 'groove', 'ridge'
 frameR['width']= 200
 frameR['height'] = 50
+
+frameO = ttk.Frame(mainframe,width=200,height= 50,relief='groove').grid(column=2, row=4)
+
 root.columnconfigure(0, weight=1)
 root.rowconfigure(0, weight=1)
 
