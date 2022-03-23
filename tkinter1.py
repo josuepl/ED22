@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from turtle import width
 
 def calculate(*args):
     try:
@@ -11,8 +12,19 @@ def calculate(*args):
 root = Tk()
 root.title("Conversión de Metros a Pies")
 
-mainframe = ttk.Frame(root, padding="3 3 12 12")
+mainframe = ttk.Frame(root)
 mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+
+#estilo frame
+styleF = ttk.Style()
+styleF.configure('CuadroControl',background = 'blue', borderwith = 5, relief='sunken')
+frameR = ttk.Frame(mainframe)
+frameR.grid(column=1,row=4)
+frameR['borderwidth'] = 3
+frameR['relief'] = 'solid'
+
+frameR['width']= 200
+frameR['height'] = 50
 root.columnconfigure(0, weight=1)
 root.rowconfigure(0, weight=1)
 
@@ -23,7 +35,7 @@ pieEntrada.grid(column=2, row=1, sticky=(W, E))
 metros = StringVar()
 ttk.Label(mainframe, textvariable=metros).grid(column=2, row=2, sticky=(W, E))
 
-ttk.Button(mainframe, text="Convertir ...", command=calculate).grid(column=3, row=3, sticky=W)
+ttk.Button(mainframe, text="Convertir ...", command=calculate).grid(column=2, row=3, sticky=W)
 
 ttk.Label(mainframe, text="Pies").grid(column=3, row=1, sticky=W)
 ttk.Label(mainframe, text="su conversión a metros es: ").grid(column=1, row=2, sticky=E)
