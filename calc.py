@@ -5,14 +5,43 @@ from turtle import heading
 
 from pyparsing import col
 
+variables =[]
+operacion= ""
 def operandos(* args):
+    textIn = args[0]
+    print("args: ", args)
+    numeros = [';','1','2','3','4','5','6','7','8','9','0']
+    operaciones = [';','+','=','-','*','/']
     try:
-        operando = args
-        print(operando)
-        #value = float(operando)
-        print("value: ",args)
+        if numeros.index(textIn):
+            var1 = entradaTxt.get()+textIn
+            print("var1: ",var1)
+            entradaTxt.set(var1)
     except ValueError:
         pass
+
+        if operaciones.index(textIn):
+            print("es una operacion")
+            try:
+                operacion = args[0]
+                value = float(entradaTxt.get())
+                print("operacion: ",operacion, "valor(float): ",value)
+                variables.append(value)
+                print(variables)
+                entradaTxt.set("")
+            except ValueError:
+                pass
+                if operacion == '+':
+                    print("SUMA")
+
+                    bandera = True
+                if operacion == '=' :
+                    print("RESULTADO")
+                    print("valor 1: ", variables[0],'valor 2: ',variables[1])
+
+                    resultado = variables[0]+ variables[1]
+                    print(resultado)
+
 
 root = Tk()
 root.title("Calculadora básica")
@@ -35,7 +64,9 @@ entrada = ttk.Entry(marcoEntrada, textvariable=entradaTxt,width=20).grid(column=
 
 valor = StringVar()
 valor = "0123456789"
-btn7 = ttk.Button(marcoPrincipal,command=lambda: operandos("7"),text=valor[7], width=10,).grid(column = 1,row = 3,sticky=(W))
+# Numeros
+
+btn7 = ttk.Button(marcoPrincipal,command=lambda: operandos("7",variables),text=valor[7], width=10,).grid(column = 1,row = 3,sticky=(W))
 btn8 = ttk.Button(marcoPrincipal,command=lambda: operandos("8"),text='8',width=10).grid(column = 2,row = 3,sticky=(W))
 btn9 = ttk.Button(marcoPrincipal,command=lambda: operandos("9"),text='9',width=10).grid(column = 3,row = 3,sticky=(W))
 btn4 = ttk.Button(marcoPrincipal,command=lambda: operandos("4"),text='4',width=10).grid(column = 1,row = 4,sticky=(W))
@@ -45,4 +76,8 @@ btn1 = ttk.Button(marcoPrincipal,command=lambda: operandos("1"),text='1',width=1
 btn2 = ttk.Button(marcoPrincipal,command=lambda: operandos("2"),text='2',width=10).grid(column = 2,row = 5,sticky=(W))
 btn3 = ttk.Button(marcoPrincipal,command=lambda: operandos("3"),text='3',width=10).grid(column = 3,row = 5,sticky=(W))
 btn0 = ttk.Button(marcoPrincipal,command=lambda: operandos("0"),text='0',width=10).grid(column = 2,row = 6,sticky=(W))
+#Operaciones
+btnSum = ttk.Button(marcoPrincipal,command=lambda: operandos("+"),text='+', width=10,).grid(column = 4,row = 3,sticky=(W))
+btnSum = ttk.Button(marcoPrincipal,command=lambda: operandos("="),text='=', width=10,).grid(column = 4,row = 4,sticky=(W))
+
 root.mainloop()
