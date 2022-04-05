@@ -26,6 +26,10 @@ canvas.create_arc( 160, 10, 200,40, fill='#007070')
 canvas.create_arc( 200, 70, 160,30, fill='#007070')
 
 #Textos
-canvas.create_text(200,200,fill='#000000' , text='Dibujos en Canvas de TKinter',width=4)
+canvas.create_text(200,200,fill='#000000' , text="Dibujos en Canvas de TKinter",width=100)
 
+#Imagenes
+
+imagen = PhotoImage(file=r"C:\Users\usuario\Documents\GitHub\ED22\img.png",format='PNG')
+canvas.create_image(0,200, image = imagen, anchor=NW)
 mainloop()
