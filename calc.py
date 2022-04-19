@@ -46,19 +46,19 @@ def operandos(* args):
 root = Tk()
 root.title("Calculadora básica")
 root.geometry("300x400")
-root.resizable(width=False, height=False)
+#root.resizable(width=False, height=False)
 root.columnconfigure(0, weight=1)                                                                                       # E Este - Derecho, S - Sur - Inferior
-root.rowconfigure(0, weight=1)
+root.rowconfigure(1, weight=1)
 styleF = ttk.Style()
 styleF.configure('principal.TFrame',background = '#0059b3', borderwith = 5, relief='sunken')
 marcoPrincipal = ttk.Frame(root,style="principal.TFrame",width=300, height=400)
 marcoPrincipal.grid(column=0 , row=1,sticky=(N,W,E,S),padx=(5,5), pady=(2,2)) # N Norte - Superior, W - West - Oeste - Izquierdo
-marcoEntrada = ttk.Frame(root,height=20,style="principal.TFrame")
-marcoEntrada.grid(column=0,row=0,sticky=(N,E,W,S),padx=(5,5), pady=(2,2))
+'''marcoEntrada = ttk.Frame(root,height=20,style="principal.TFrame")
+marcoEntrada.grid(column=0,row=0,sticky=(N,E,W,S),padx=(5,5), pady=(2,2))'''
 
 # Caja de entrada
 entradaTxt = StringVar()
-entrada = ttk.Entry(marcoEntrada, textvariable=entradaTxt,width=20).grid(column=0, row= 0,sticky=(N,E,W),padx=(6,6), pady=(2,2))
+entrada = ttk.Entry(marcoPrincipal, textvariable=entradaTxt,width=20).grid(column=0, row= 0,sticky=(N,E,W),padx=(2,2), pady=(2,2), columnspan=5)
 
 #Lista de Botones
 
